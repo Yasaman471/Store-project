@@ -4,7 +4,7 @@ import api from "../Services/config";
 const ProductContext = createContext();
 
 function ProductProvider({ children }) {
-  const [product, setProduct] = useState([]);
+  const [products, setProduct] = useState([]);
 
   useEffect(() => {
     try {
@@ -17,7 +17,7 @@ function ProductProvider({ children }) {
     }
   }, []);
   return (
-    <ProductContext.Provider value={{ product }}>
+    <ProductContext.Provider value={products}>
       {children}
     </ProductContext.Provider>
   );
