@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../Components/Card";
 import Loader from "../Components/Loader";
 import { useProducts } from "../Context/ProductContext";
@@ -8,19 +8,29 @@ import { FaListUl } from "react-icons/fa";
 
 function ProductPage() {
   const [search, setSearch] = useState("");
+  const [displayed, setDisplayed] = useState([]);
+  const [query, setQuery] = useState({});
+
   const products = useProducts();
 
+  useEffect(() => {
+    setDisplayed(products);
+  }, [products]);
+
+  useEffect(() => {
+    console.log(query);
+  }, [query]);
+
   const SearchHandler = () => {
-    console.log("Search");
+    setQuery((query) => ({ ...query, search }));
   };
 
   const categoryHandler = (event) => {
     const { tagName } = event.target;
     const category = event.target.innerText.toLowerCase();
+    setQuery((query) => ({ ...query, category }));
 
     if (tagName !== "LI") return;
-
-    console.log(category);
   };
 
   return (
@@ -38,8 +48,8 @@ function ProductPage() {
       </div>
       <div className={styles.container}>
         <div className={styles.products}>
-          {!products.length && <Loader />}
-          {products.map((item) => (
+          {!displayed.length && <Loader />}
+          {displayed.map((item) => (
             <Card key={item.id} data={item} />
           ))}
         </div>
