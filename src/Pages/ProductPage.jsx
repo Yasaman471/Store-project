@@ -5,32 +5,41 @@ import { useProducts } from "../Context/ProductContext";
 import styles from "./ProductPage.module.css";
 import { ImSearch } from "react-icons/im";
 import { FaListUl } from "react-icons/fa";
+import {
+  createObjectQuery,
+  filterProducts,
+  searchProducts,
+} from "../Helpers/helper";
+import { useSearchParams } from "react-router-dom";
 
 function ProductPage() {
+  const products = useProducts();
+
   const [search, setSearch] = useState("");
   const [displayed, setDisplayed] = useState([]);
   const [query, setQuery] = useState({});
 
-  const products = useProducts();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setDisplayed(products);
   }, [products]);
 
   useEffect(() => {
-    console.log(query);
-  }, [query]);
+    setSearchParams(query);
+    let finalProducts = searchProducts(products, query.search);
+    finalProducts = filterProducts(finalProducts, query.category);
+    setDisplayed(finalProducts);
+  }, [query, products]);
 
   const SearchHandler = () => {
-    setQuery((query) => ({ ...query, search }));
+    setQuery((query) => createObjectQuery(query, { search }));
   };
 
   const categoryHandler = (event) => {
-    const { tagName } = event.target;
+    if (event.target.tagName !== "LI") return;
     const category = event.target.innerText.toLowerCase();
-    setQuery((query) => ({ ...query, category }));
-
-    if (tagName !== "LI") return;
+    setQuery((query) => createObjectQuery(query, { category }));
   };
 
   return (
