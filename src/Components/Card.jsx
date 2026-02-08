@@ -1,6 +1,8 @@
-import { TbListDetails, TbShoppingBagCheck } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import { TbListDetails, TbShoppingBagCheck } from "react-icons/tb";
+
 import { shortenText } from "../Helpers/helper";
+
 import styles from "./Card.module.css";
 
 function Card({ data }) {

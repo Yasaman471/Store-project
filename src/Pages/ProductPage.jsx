@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import Card from "../Components/Card";
 import Loader from "../Components/Loader";
+import SearchBox from "../Components/SearchBox";
+import SideBar from "../Components/SideBar";
 import { useProducts } from "../Context/ProductContext";
-import styles from "./ProductPage.module.css";
-import { FaListUl } from "react-icons/fa";
 import {
   filterProducts,
   getInitialQuery,
   searchProducts,
 } from "../Helpers/helper";
-import { useSearchParams } from "react-router-dom";
-import SearchBox from "../Components/SearchBox";
-import SideBar from "../Components/SideBar";
+
+import styles from "./ProductPage.module.css";
 
 function ProductPage() {
   const products = useProducts();
@@ -45,7 +46,7 @@ function ProductPage() {
             <Card key={item.id} data={item} />
           ))}
         </div>
-        <SideBar setQuery={setQuery} />
+        <SideBar query={query} setQuery={setQuery} />
       </div>
     </>
   );
