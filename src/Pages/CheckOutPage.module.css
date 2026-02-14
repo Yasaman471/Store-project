@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    min-height: 1000px;
+}
+
+.emptyCartContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    text-align: center;
+}
+
+.emptyCartContainer svg {
+    font-size: 100px;
+    color: #FF6F61;
+    margin-bottom: 15px;
+}
+
+.emptyCartContainer p {
+    font-size: 1.4em;
+    margin-top: 0;
+    color: #555;
+}
+
+.products {
+    width: 100%;
+}
