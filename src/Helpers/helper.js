@@ -58,6 +58,12 @@ const productQuantity = (state, id) => {
     return state.selectedItems[index].quantity;
   }
 };
+
+const calculateItemTotalPrice = (price, quantity) => {
+  const totalPrice = price * quantity;
+  return totalPrice;
+};
+
 export {
   shortenText,
   searchProducts,
@@ -66,4 +72,5 @@ export {
   getInitialQuery,
   sumProducts,
   productQuantity,
+  calculateItemTotalPrice,
 };
