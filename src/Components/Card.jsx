@@ -3,19 +3,20 @@ import { TbListDetails, TbShoppingBagCheck } from "react-icons/tb";
 import { MdDeleteOutline } from "react-icons/md";
 
 import { productQuantity, shortenText } from "../Helpers/helper";
-import { useCart } from "../Context/CartContext";
+// import { useCart } from "../Context/CartContext";
 
 import styles from "./Card.module.css";
 
 function Card({ data }) {
   const { id, image, price, title } = data;
 
-  const [state, dispatch] = useCart();
+  // const [state, dispatch] = useCart();
 
-  const quantity = productQuantity(state, id);
+  // const quantity = productQuantity(state, id);
+  const quantity = 0;
 
   const clickHandler = (type) => {
-    dispatch({ type, payload: data });
+    // dispatch({ type, payload: data });
   };
 
   return (

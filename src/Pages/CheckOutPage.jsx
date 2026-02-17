@@ -1,19 +1,19 @@
 import { IoBagHandleOutline } from "react-icons/io5";
 
 import BasketCard from "../Components/BasketCard";
-import { useCart } from "../Context/CartContext";
+// import { useCart } from "../Context/CartContext";
 
 import styles from "./CheckOutPage.module.css";
 import BasketSidebar from "../Components/BasketSidebar";
 
 function CheckOutPage() {
-  const [state, dispatch] = useCart();
+  // const [state, dispatch] = useCart();
 
-  const clickHandler = (type, payload) => dispatch({ type, payload });
+  // const clickHandler = (type, payload) => dispatch({ type, payload });
 
   return (
     <div>
-      {!state.totalQuantity ? (
+      {/* {!state.totalQuantity ? (
         <div className={styles.emptyCartContainer}>
           <p>Your Card Is Empty!!</p>
           <IoBagHandleOutline />
@@ -31,7 +31,7 @@ function CheckOutPage() {
             ))}
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
